@@ -19,7 +19,7 @@ namespace ArborTester
 			BinaryArbor1<int> tree = new BinaryArbor1<int>();
 			List<int> values = new List<int> ();
 			tree.Populate(values);
-			Assert.Equals(default(int),tree.Value);
+			Assert.AreEqual(default(int),tree.Value);
 			Assert.IsNull (tree.Left);
 			Assert.IsNull (tree.Right);
 		}
@@ -30,7 +30,7 @@ namespace ArborTester
 			BinaryArbor1<int> tree = new BinaryArbor1<int>();
 			int[] values = { 1 };
 			tree.Populate(values);
-			Assert.Equals(values[0],tree.Value);
+			Assert.AreEqual(values[0],tree.Value);
 			Assert.IsNull (tree.Left);
 			Assert.IsNull (tree.Right);
 		}
@@ -41,8 +41,8 @@ namespace ArborTester
 			BinaryArbor1<int> tree = new BinaryArbor1<int>();
 			int[] values = { 1, 2 };
 			tree.Populate(values);
-			Assert.Equals(values[0],tree.Value);
-			Assert.Equals(values[1],tree.Right.Value);
+			Assert.AreEqual(values[0],tree.Value);
+			Assert.AreEqual(values[1],tree.Right.Value);
 		}
 
 		[Test ()]
@@ -51,9 +51,9 @@ namespace ArborTester
 			BinaryArbor1<int> tree = new BinaryArbor1<int>();
 			int[] values = { 1, 2, 3 };
 			tree.Populate(values);
-			Assert.Equals(values[0],tree.Left.Value);
-			Assert.Equals(values[1],tree.Value);
-			Assert.Equals(values[2],tree.Right.Value);
+			Assert.AreEqual(values[0],tree.Left.Value);
+			Assert.AreEqual(values[1],tree.Value);
+			Assert.AreEqual(values[2],tree.Right.Value);
 			Assert.IsNull (tree.Left.Right);
 			Assert.IsNull (tree.Left.Left);
 			Assert.IsNull (tree.Right.Left);
@@ -66,10 +66,10 @@ namespace ArborTester
 			BinaryArbor1<int> tree = new BinaryArbor1<int>();
 			int[] values = { 1, 2, 3, 4 };
 			tree.Populate(values);
-			Assert.Equals(values[0],tree.Left.Value);
-			Assert.Equals(values[1],tree.Value);
-			Assert.Equals(values[2],tree.Right.Value);
-			Assert.Equals(values[3],tree.Right.Right.Value);
+			Assert.AreEqual(values[0],tree.Left.Value);
+			Assert.AreEqual(values[1],tree.Value);
+			Assert.AreEqual(values[2],tree.Right.Value);
+			Assert.AreEqual(values[3],tree.Right.Right.Value);
 			Assert.IsNull (tree.Right.Left);
 		}
 	}
