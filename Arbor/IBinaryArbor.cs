@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Arbor
 {
@@ -18,6 +19,24 @@ namespace Arbor
 		/// </summary>
 		/// <value>The right child of this node (nullable)</value>
 		IBinaryArbor<T> Right {get;set;}
+
+		/// <summary>
+		/// Populate the specified items into the tree. If items are in order, the result will be a binary search tree.
+		/// </summary>
+		/// <param name="items">The items to insert</param>
+		void Populate(IEnumerable<T> items);
+
+		/// <summary>
+		/// Gets an enumerated collection of all the items in a tree using a Breadth First Search (BFS).
+		/// </summary>
+		/// <returns>an enumerated collection of all the items in a tree using a Breadth First Search (BFS)</returns>
+		IEnumerable<T> ItemsAsBFS();
+
+		/// <summary>
+		/// Gets an enumerated collection of all the items in a tree using a Depth First Search (DFS).
+		/// </summary>
+		/// <returns>an enumerated collection of all the items in a tree using a Depth First Search (DFS)</returns>
+		IEnumerable<T> ItemsAsDFS();
 	}
 }
 

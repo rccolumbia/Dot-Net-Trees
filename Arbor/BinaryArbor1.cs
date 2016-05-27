@@ -74,20 +74,74 @@ namespace Arbor
 		/// Populate the specified items into the tree. If items are in order, the result will be a binary search tree.
 		/// </summary>
 		/// <param name="items">The items to insert</param>
-		public void Populate(IList<T> items)
+		public void Populate(List<T> items)
 		{
 			//List<T> itemsAsList = new List<T> (items);
-			int numItems = items.Count;
-			//Special cases for collections of size 0 and 1:
+			int size = items.Count;
+			//Special cases for collections of size 0, 1, and 2:
 
 			//Recursive cases:
 
 			//Get the root to use using integer division.
-			int newRootKey = (numItems-1)/2;
+			int newRootKey = (size-1)/2;
 			//Insert the root item.
 			Value = items[newRootKey];
-
+			//Create nodes to be our children.
+			BinaryArbor1<T> left = new BinaryArbor1<T>();
+			BinaryArbor1<T> right = new BinaryArbor1<T>();
+			//Set our children to point to these new nodes.
+			Left = left;
+			Right = Right;
+			//Split the list into two sub-lists.
+			List<T> leftChildren = items.GetRange(0,newRootKey);
+			List<T> RightChildren = items.GetRange (newRootKey + 1, size - (newRootKey + 1));
+			//Populate the new nodes.
+			Left.Populate(leftChildren);
+			Right.Populate(RightChildren);
 		}
+
+		/// <summary>
+		/// Gets an enumerated collection of all the items in a tree using a Breadth First Search (BFS).
+		/// </summary>
+		/// <returns>an enumerated collection of all the items in a tree using a Breadth First Search (BFS)</returns>
+		public IEnumerable<T> ItemsAsBFS()
+		{
+			List<T> items = new List<T>();
+			//Store the current element's value in the list.
+			items.Add(Value);
+			//Dig down to our children, if any.
+			if (null != Left)
+			{
+				items.AddRange (Left.ItemsAsBFS());
+			}
+			if (null != Right)
+			{
+				items.AddRange (Right.ItemsAsBFS());
+			}
+			return items;
+		}
+
+		/// <summary>
+		/// Gets an enumerated collection of all the items in a tree using a Depth First Search (DFS).
+		/// </summary>
+		/// <returns>an enumerated collection of all the items in a tree using a Depth First Search (DFS)</returns>
+		public IEnumerable<T> ItemsAsDFS()
+		{
+			List<T> items = new List<T>();
+			//Dig down to our children, if any.
+			if (null != Left)
+			{
+				items.AddRange (Left.ItemsAsBFS());
+			}
+			if (null != Right)
+			{
+				items.AddRange (Right.ItemsAsBFS());
+			}
+			//Store the current element's value in the list.
+			items.Add(Value);
+			return items;
+		}
+
 	}
 }
 
