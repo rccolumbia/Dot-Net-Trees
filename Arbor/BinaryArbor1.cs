@@ -119,7 +119,7 @@ namespace Arbor
 			BinaryArbor1<T> right = new BinaryArbor1<T>();
 			//Set our children to point to these new nodes.
 			Left = left;
-			Right = Right;
+			Right = right;
 			//Split the list into two sub-lists.
 			List<T> leftChildren = items.GetRange(0,newRootKey);
 			List<T> RightChildren = items.GetRange (newRootKey + 1, size - (newRootKey + 1));
