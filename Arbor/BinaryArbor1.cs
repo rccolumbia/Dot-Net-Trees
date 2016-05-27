@@ -59,6 +59,35 @@ namespace Arbor
 				return returnCollection;
 			}
 		}
+
+		/// <summary>
+		/// Populate the specified items into the tree. If items are in order, the result will be a binary search tree.
+		/// </summary>
+		/// <param name="items">The items to insert</param>
+		public void Populate(IEnumerable<T> items)
+		{
+			List<T> itemsAsList = new List<T> (items);
+			Populate (itemsAsList);
+		}
+
+		/// <summary>
+		/// Populate the specified items into the tree. If items are in order, the result will be a binary search tree.
+		/// </summary>
+		/// <param name="items">The items to insert</param>
+		public void Populate(IList<T> items)
+		{
+			//List<T> itemsAsList = new List<T> (items);
+			int numItems = items.Count;
+			//Special cases for collections of size 0 and 1:
+
+			//Recursive cases:
+
+			//Get the root to use using integer division.
+			int newRootKey = (numItems-1)/2;
+			//Insert the root item.
+			Value = items[newRootKey];
+
+		}
 	}
 }
 
