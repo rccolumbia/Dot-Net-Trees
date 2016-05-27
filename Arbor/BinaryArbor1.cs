@@ -61,6 +61,15 @@ namespace Arbor
 		}
 
 		/// <summary>
+		/// Nulls the children of this node.
+		/// </summary>
+		public void ClearChildren()
+		{
+			Left = null;
+			Right = null;
+		}
+
+		/// <summary>
 		/// Populate the specified items into the tree. If items are in order, the result will be a binary search tree.
 		/// </summary>
 		/// <param name="items">The items to insert</param>
@@ -79,7 +88,26 @@ namespace Arbor
 			//List<T> itemsAsList = new List<T> (items);
 			int size = items.Count;
 			//Special cases for collections of size 0, 1, and 2:
-
+			if (0 == size)
+			{
+				//There are no items to populate.
+				Value = default(T);
+				ClearChildren();
+				return;
+			}
+			if (1 == size)
+			{
+				Value = items [0];
+				ClearChildren();
+				return;
+			}
+			if (2 == size)
+			{
+				Value = items [0];
+				Left = null;
+				Right = new BinaryArbor1<T> (items[1], null, null);
+				return;
+			}
 			//Recursive cases:
 
 			//Get the root to use using integer division.
