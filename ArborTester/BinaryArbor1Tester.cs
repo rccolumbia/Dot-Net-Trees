@@ -71,6 +71,47 @@ namespace ArborTester
 			Assert.AreEqual(values[2],tree.Right.Value);
 			Assert.AreEqual(values[3],tree.Right.Right.Value);
 			Assert.IsNull (tree.Right.Left);
+			Assert.IsNull (tree.Left.Left);
+			Assert.IsNull (tree.Left.Right);
+			Assert.IsNull (tree.Right.Right.Left);
+			Assert.IsNull (tree.Right.Right.Right);
+		}
+
+		[Test ()]
+		public void AsBFS4()
+		{
+			BinaryArbor1<int> tree = new BinaryArbor1<int>(2, new BinaryArbor1<int>(1, null, null), new BinaryArbor1<int>(2, null, new BinaryArbor1<int>(3, null, null)));
+			int[] targetValues = { 1, 2, 3, 4 };
+			AssertCollectionEquality (tree.ItemsAsBFS (), targetValues);
+
+		}
+
+		[Test ()]
+		public void AsDFS4()
+		{
+			BinaryArbor1<int> tree = new BinaryArbor1<int>(2, new BinaryArbor1<int>(1, null, null), new BinaryArbor1<int>(2, null, new BinaryArbor1<int>(3, null, null)));
+			int[] targetValues = { 1, 4, 3, 2 };
+			AssertCollectionEquality (tree.ItemsAsDFS (), targetValues);
+
+		}
+
+		/// <summary>
+		/// Iterates over two collections and asserts that the collections have the same length and that they have the same elements when compared 1 to 1 by using Assert.AreEqual.
+		/// </summary>
+		/// <param name="left">The left collection</param>
+		/// <param name="right">The right collection</param>
+		/// <typeparam name="T">The 1st type parameter.</typeparam>
+		private void AssertCollectionEquality<T>(IEnumerable<T> left, IEnumerable<T> right)
+		{
+			List<T> leftList = new List<T> (left);
+			List<T> rightList = new List<T> (right);
+			Assert.AreEqual (leftList.Count, rightList.Count);
+			//Now we know that they are the same length. Now check the elements.
+			int size = leftList.Count;
+			for (int counter = 0; counter < size; counter++)
+			{
+				Assert.AreEqual (leftList [counter], rightList [counter]);
+			}
 		}
 	}
 }
