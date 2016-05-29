@@ -175,28 +175,10 @@ namespace Arbor
 		/// <returns>an enumerated collection of all the items in a tree using a Breadth First Search (BFS)</returns>
 		public IEnumerable<T> GetItemsAsBFS()
 		{
-			List<T> items = new List<T>();
-			//Store the current element's value in the list.
-			items.Add(Value);
-			//Dig down to our children, if any.
-			if (null != Left)
+			foreach (IBinaryArbor<T> descendantNode in GetChildrenAsBFS())
 			{
-				items.Add (Left.Value);
+				yield return descendantNode.Value;
 			}
-			if (null != Right)
-			{
-				items.Add(Right.Value);
-			}
-
-			if (null != Left)
-			{
-				items.AddRange (Left.GetItemsAsBFS());
-			}
-			if (null != Right)
-			{
-				items.AddRange (Right.GetItemsAsBFS());
-			}
-			return items;
 		}
 
 		/// <summary>
@@ -205,26 +187,68 @@ namespace Arbor
 		/// <returns>an enumerated collection of all the items in a tree using a Depth First Search (DFS)</returns>
 		public IEnumerable<T> GetItemsAsDFS()
 		{
-			List<T> items = new List<T>();
+			foreach (IBinaryArbor<T> descendantNode in GetChildrenAsDFS())
+			{
+				yield return descendantNode.Value;
+			}
+		}
+
+		/// <summary>
+		/// Gets an enumerated collection of all the nodes in a tree using a Breadth First Search (BFS).
+		/// </summary>
+		/// <returns>an enumerated collection of all the nodes in a tree using a Breadth First Search (BFS)</returns>
+		public IEnumerable<IBinaryArbor<T>> GetChildrenAsBFS()
+		{
+			List<IBinaryArbor<T>> items = new List<IBinaryArbor<T>>();
+			//Store the current element in the list.
+			items.Add(this);
 			//Dig down to our children, if any.
 			if (null != Left)
 			{
-				items.AddRange (Left.GetItemsAsBFS());
+				items.Add (Left);
 			}
 			if (null != Right)
 			{
-				items.AddRange (Right.GetItemsAsBFS());
+				items.Add(Right);
+			}
+
+			if (null != Left)
+			{
+				items.AddRange (Left.GetChildrenAsBFS());
+			}
+			if (null != Right)
+			{
+				items.AddRange (Right.GetChildrenAsBFS());
+			}
+			return items;
+		}
+
+		/// <summary>
+		/// Gets an enumerated collection of all the items in a tree using a Depth First Search (DFS).
+		/// </summary>
+		/// <returns>an enumerated collection of all the nodes in a tree using a Depth First Search (DFS)</returns>
+		public IEnumerable<IBinaryArbor<T>> GetChildrenAsDFS()
+		{
+			List<IBinaryArbor<T>> items = new List<IBinaryArbor<T>>();
+			//Dig down to our children, if any.
+			if (null != Left)
+			{
+				items.AddRange (Left.GetChildrenAsBFS());
+			}
+			if (null != Right)
+			{
+				items.AddRange (Right.GetChildrenAsBFS());
 			}
 			if (null != Left)
 			{
-				items.Add (Left.Value);
+				items.Add (Left);
 			}
 			if (null != Right)
 			{
-				items.Add(Right.Value);
+				items.Add(Right);
 			}
-			//Store the current element's value in the list.
-			items.Add(Value);
+			//Store the current element in the list.
+			items.Add(this);
 			return items;
 		}
 

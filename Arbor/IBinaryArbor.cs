@@ -27,6 +27,18 @@ namespace Arbor
 		void Populate(IEnumerable<T> items);
 
 		/// <summary>
+		/// Gets an enumerated collection of all the nodes in a tree using a Breadth First Search (BFS).
+		/// </summary>
+		/// <returns>an enumerated collection of all the nodes in a tree using a Breadth First Search (BFS)</returns>
+		IEnumerable<IBinaryArbor<T>> GetChildrenAsBFS();
+
+		/// <summary>
+		/// Gets an enumerated collection of all the nodes in a tree using a Depth First Search (DFS).
+		/// </summary>
+		/// <returns>an enumerated collection of all the nodes in a tree using a Breadth First Search (BFS)</returns>
+		IEnumerable<IBinaryArbor<T>> GetChildrenAsDFS();
+
+		/// <summary>
 		/// Gets an enumerated collection of all the items in a tree using a Breadth First Search (BFS).
 		/// </summary>
 		/// <returns>an enumerated collection of all the items in a tree using a Breadth First Search (BFS)</returns>
@@ -37,6 +49,7 @@ namespace Arbor
 		/// </summary>
 		/// <returns>an enumerated collection of all the items in a tree using a Depth First Search (DFS)</returns>
 		IEnumerable<T> GetItemsAsDFS();
+
 	}
 }
 
