@@ -36,6 +36,7 @@
     <Compile Include="IBinaryArbor.cs" />
     <Compile Include="IArbor.cs" />
     <Compile Include="BinaryArbor1.cs" />
+    <Compile Include="IParentedArbor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

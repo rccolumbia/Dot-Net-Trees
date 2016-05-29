@@ -6,7 +6,7 @@ namespace Arbor
 	/// <summary>
 	/// IBinaryArbor<T> is an interface for a generic binary tree of type T.
 	/// </summary>
-	public interface IBinaryArbor<T> : IArbor<T>
+	public interface IBinaryArbor<T> : IArbor<T>, IParentedArbor<T>
 	{
 		/// <summary>
 		/// Gets or sets the left child of this node.

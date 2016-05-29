@@ -9,6 +9,10 @@ namespace Arbor
 	/// </summary>
 	public class BinaryArbor1<T>:IBinaryArbor<T>
 	{
+		private IBinaryArbor<T> left;
+		private IBinaryArbor<T> right;
+		private IParentedArbor<T> parent;
+
 		public BinaryArbor1()
 		{
 		}
@@ -36,13 +40,50 @@ namespace Arbor
 		/// Gets or sets the left child of this node.
 		/// </summary>
 		/// <value>The left child of this node (nullable)</value>
-		public IBinaryArbor<T> Left {get;set;}
+		public IBinaryArbor<T> Left
+		{
+			get
+			{
+				return left;
+			}
+			set
+			{
+				//Todo: See if a former child needs to be notified.
+				left = value;
+				RegisterParentage(left);
+			}
+		}
 
 		/// <summary>
 		/// Gets or sets the right child of this node.
 		/// </summary>
 		/// <value>The right child of this node (nullable)</value>
-		public IBinaryArbor<T> Right {get;set;}
+		public IBinaryArbor<T> Right
+		{
+			get
+			{
+				return right;
+			}
+			set
+			{
+				//Todo: See if a former child needs to be notified.
+				right = value;
+				RegisterParentage(right);
+			}
+		}
+
+		public IParentedArbor<T> Parent
+		{
+			get
+			{
+				return parent;
+			}
+			set
+			{
+				//Todo: See if a previous parent needs to be notified.
+				parent = value;
+			}
+		}
 
 		/// <summary>
 		/// Gets a collection of references to the children of this node.
@@ -185,6 +226,18 @@ namespace Arbor
 			//Store the current element's value in the list.
 			items.Add(Value);
 			return items;
+		}
+
+		/// <summary>
+		/// Registers the parentage of adoptee as this object.
+		/// </summary>
+		/// <param name="adoptee">The node whose parentage should be set.</param>
+		private void RegisterParentage(IBinaryArbor<T> adoptee)
+		{
+			if (null != adoptee)
+			{
+				adoptee.Parent = this;
+			}
 		}
 
 	}

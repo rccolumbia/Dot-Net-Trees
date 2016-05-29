@@ -75,6 +75,9 @@ namespace ArborTester
 			Assert.IsNull (tree.Left.Right);
 			Assert.IsNull (tree.Right.Right.Left);
 			Assert.IsNull (tree.Right.Right.Right);
+			Assert.AreEqual (tree.Left.Parent.Value, tree.Value);
+			Assert.AreEqual (tree.Right.Parent.Value, tree.Value);
+			Assert.AreEqual (tree.Right.Right.Parent.Value, tree.Right.Value);
 		}
 
 		[Test ()]
