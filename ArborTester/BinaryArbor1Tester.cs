@@ -81,7 +81,7 @@ namespace ArborTester
 		public void AsBFS4()
 		{
 			BinaryArbor1<int> tree = new BinaryArbor1<int>(2, new BinaryArbor1<int>(1, null, null), new BinaryArbor1<int>(2, null, new BinaryArbor1<int>(3, null, null)));
-			int[] targetValues = { 1, 2, 3, 4 };
+			int[] targetValues = { 2, 1, 3, 4 };
 			AssertCollectionEquality (tree.ItemsAsBFS (), targetValues);
 
 		}

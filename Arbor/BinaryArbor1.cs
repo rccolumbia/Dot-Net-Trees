@@ -140,6 +140,15 @@ namespace Arbor
 			//Dig down to our children, if any.
 			if (null != Left)
 			{
+				items.Add (Left.Value);
+			}
+			if (null != Right)
+			{
+				items.Add(Right.Value);
+			}
+
+			if (null != Left)
+			{
 				items.AddRange (Left.ItemsAsBFS());
 			}
 			if (null != Right)
@@ -164,6 +173,14 @@ namespace Arbor
 			if (null != Right)
 			{
 				items.AddRange (Right.ItemsAsBFS());
+			}
+			if (null != Left)
+			{
+				items.Add (Left.Value);
+			}
+			if (null != Right)
+			{
+				items.Add(Right.Value);
 			}
 			//Store the current element's value in the list.
 			items.Add(Value);
