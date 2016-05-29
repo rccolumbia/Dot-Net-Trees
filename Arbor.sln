@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arbor", "Arbor\Arbor.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArborTester", "ArborTester\ArborTester.csproj", "{1484F7AC-1078-4F42-9F38-205124EDA8EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YHaplogroup", "YHaplogroup\YHaplogroup.csproj", "{D1F2BA34-CA48-4072-84AE-BC6FED2E3CAB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +21,9 @@ Global
 		{1EFCFF17-78AE-4765-B5F1-BD53257EBA78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EFCFF17-78AE-4765-B5F1-BD53257EBA78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EFCFF17-78AE-4765-B5F1-BD53257EBA78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1F2BA34-CA48-4072-84AE-BC6FED2E3CAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1F2BA34-CA48-4072-84AE-BC6FED2E3CAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1F2BA34-CA48-4072-84AE-BC6FED2E3CAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1F2BA34-CA48-4072-84AE-BC6FED2E3CAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
