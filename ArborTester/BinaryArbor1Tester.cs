@@ -82,7 +82,7 @@ namespace ArborTester
 		{
 			BinaryArbor1<int> tree = new BinaryArbor1<int>(2, new BinaryArbor1<int>(1, null, null), new BinaryArbor1<int>(2, null, new BinaryArbor1<int>(3, null, null)));
 			int[] targetValues = { 2, 1, 3, 4 };
-			AssertCollectionEquality (tree.ItemsAsBFS (), targetValues);
+			AssertCollectionEquality (tree.GetItemsAsBFS (), targetValues);
 
 		}
 
@@ -91,7 +91,7 @@ namespace ArborTester
 		{
 			BinaryArbor1<int> tree = new BinaryArbor1<int>(2, new BinaryArbor1<int>(1, null, null), new BinaryArbor1<int>(2, null, new BinaryArbor1<int>(3, null, null)));
 			int[] targetValues = { 1, 4, 3, 2 };
-			AssertCollectionEquality (tree.ItemsAsDFS (), targetValues);
+			AssertCollectionEquality (tree.GetItemsAsDFS (), targetValues);
 
 		}
 

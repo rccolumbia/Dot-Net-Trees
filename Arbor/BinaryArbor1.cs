@@ -132,7 +132,7 @@ namespace Arbor
 		/// Gets an enumerated collection of all the items in a tree using a Breadth First Search (BFS).
 		/// </summary>
 		/// <returns>an enumerated collection of all the items in a tree using a Breadth First Search (BFS)</returns>
-		public IEnumerable<T> ItemsAsBFS()
+		public IEnumerable<T> GetItemsAsBFS()
 		{
 			List<T> items = new List<T>();
 			//Store the current element's value in the list.
@@ -149,11 +149,11 @@ namespace Arbor
 
 			if (null != Left)
 			{
-				items.AddRange (Left.ItemsAsBFS());
+				items.AddRange (Left.GetItemsAsBFS());
 			}
 			if (null != Right)
 			{
-				items.AddRange (Right.ItemsAsBFS());
+				items.AddRange (Right.GetItemsAsBFS());
 			}
 			return items;
 		}
@@ -162,17 +162,17 @@ namespace Arbor
 		/// Gets an enumerated collection of all the items in a tree using a Depth First Search (DFS).
 		/// </summary>
 		/// <returns>an enumerated collection of all the items in a tree using a Depth First Search (DFS)</returns>
-		public IEnumerable<T> ItemsAsDFS()
+		public IEnumerable<T> GetItemsAsDFS()
 		{
 			List<T> items = new List<T>();
 			//Dig down to our children, if any.
 			if (null != Left)
 			{
-				items.AddRange (Left.ItemsAsBFS());
+				items.AddRange (Left.GetItemsAsBFS());
 			}
 			if (null != Right)
 			{
-				items.AddRange (Right.ItemsAsBFS());
+				items.AddRange (Right.GetItemsAsBFS());
 			}
 			if (null != Left)
 			{

@@ -30,13 +30,13 @@ namespace Arbor
 		/// Gets an enumerated collection of all the items in a tree using a Breadth First Search (BFS).
 		/// </summary>
 		/// <returns>an enumerated collection of all the items in a tree using a Breadth First Search (BFS)</returns>
-		IEnumerable<T> ItemsAsBFS();
+		IEnumerable<T> GetItemsAsBFS();
 
 		/// <summary>
 		/// Gets an enumerated collection of all the items in a tree using a Depth First Search (DFS).
 		/// </summary>
 		/// <returns>an enumerated collection of all the items in a tree using a Depth First Search (DFS)</returns>
-		IEnumerable<T> ItemsAsDFS();
+		IEnumerable<T> GetItemsAsDFS();
 	}
 }
 
