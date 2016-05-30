@@ -169,16 +169,21 @@ namespace Arbor
 			Right.Populate(RightChildren);
 		}
 
+		public static IEnumerable<T> ExtractValues(IEnumerable<IBinaryArbor<T>> nodes)
+		{
+			foreach (IBinaryArbor<T> descendantNode in nodes)
+			{
+				yield return descendantNode.Value;
+			}
+		}
+
 		/// <summary>
 		/// Gets an enumerated collection of all the items in a tree using a Breadth First Search (BFS).
 		/// </summary>
 		/// <returns>an enumerated collection of all the items in a tree using a Breadth First Search (BFS)</returns>
 		public IEnumerable<T> GetItemsAsBFS()
 		{
-			foreach (IBinaryArbor<T> descendantNode in GetChildrenAsBFS())
-			{
-				yield return descendantNode.Value;
-			}
+			return ExtractValues(GetChildrenAsBFS());
 		}
 
 		/// <summary>
@@ -187,10 +192,7 @@ namespace Arbor
 		/// <returns>an enumerated collection of all the items in a tree using a Depth First Search (DFS)</returns>
 		public IEnumerable<T> GetItemsAsDFS()
 		{
-			foreach (IBinaryArbor<T> descendantNode in GetChildrenAsDFS())
-			{
-				yield return descendantNode.Value;
-			}
+			return ExtractValues(GetChildrenAsBFS());
 		}
 
 		/// <summary>
