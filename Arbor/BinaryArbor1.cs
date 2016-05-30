@@ -169,6 +169,11 @@ namespace Arbor
 			Right.Populate(RightChildren);
 		}
 
+		/// <summary>
+		/// Extracts the underlying values from a set of nodes
+		/// </summary>
+		/// <returns>The nodes</returns>
+		/// <param name="nodes">A collection of the values (.Value) of each node</param>
 		public static IEnumerable<T> ExtractValues(IEnumerable<IBinaryArbor<T>> nodes)
 		{
 			foreach (IBinaryArbor<T> descendantNode in nodes)
