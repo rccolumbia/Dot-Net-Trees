@@ -201,6 +201,29 @@ namespace Arbor
 		}
 
 		/// <summary>
+		/// Gets all of the node's ancestors
+		/// </summary>
+		/// <returns>The ancestors of this node</returns>
+		public IEnumerable<IParentedArbor<T>> GetAncestors()
+		{
+			IParentedArbor<T> current = this.Parent;
+			while (null != current)
+			{
+				yield return current;
+				current = current.Parent;
+			}
+		}
+
+		/// <summary>
+		/// Gets an enumerated collection of all the descendants in the tree.
+		/// </summary>
+		/// <returns>an enumerated collection of all the descendants in the tree.</returns>
+		public IEnumerable<IBinaryArbor<T>> GetDescendants()
+		{
+			return GetChildrenAsBFS();
+		}
+
+		/// <summary>
 		/// Gets an enumerated collection of all the nodes in a tree using a Breadth First Search (BFS).
 		/// </summary>
 		/// <returns>an enumerated collection of all the nodes in a tree using a Breadth First Search (BFS)</returns>

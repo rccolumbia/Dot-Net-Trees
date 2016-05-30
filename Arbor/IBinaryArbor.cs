@@ -27,6 +27,12 @@ namespace Arbor
 		void Populate(IEnumerable<T> items);
 
 		/// <summary>
+		/// Gets an enumerated collection of all the descendants in the tree.
+		/// </summary>
+		/// <returns>an enumerated collection of all the descendants in the tree.</returns>
+		IEnumerable<IBinaryArbor<T>> GetDescendants();
+
+		/// <summary>
 		/// Gets an enumerated collection of all the nodes in a tree using a Breadth First Search (BFS).
 		/// </summary>
 		/// <returns>an enumerated collection of all the nodes in a tree using a Breadth First Search (BFS)</returns>

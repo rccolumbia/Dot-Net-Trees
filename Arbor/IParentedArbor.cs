@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Arbor
 {
@@ -8,6 +9,12 @@ namespace Arbor
 	public interface IParentedArbor<T> : IArbor<T>
 	{
 		IParentedArbor<T> Parent { get; set;}
+
+		/// <summary>
+		/// Gets all of the node's ancestors
+		/// </summary>
+		/// <returns>The ancestors of this node</returns>
+		IEnumerable<IParentedArbor<T>> GetAncestors();
 	}
 }
 
