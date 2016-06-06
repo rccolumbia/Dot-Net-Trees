@@ -98,6 +98,24 @@ namespace ArborTester
 
 		}
 
+		[Test ()]
+		public void TestExtractValues()
+		{
+			IBinaryArbor<char>[] nodes = new IBinaryArbor<char>[4];
+			char[] chars = new char[4];
+			chars [0] = 'a';
+			chars [1] = 'b';
+			chars [2] = 'c';
+			chars [3] = 'd';
+			nodes [0] = new BinaryArbor1<char> (chars[0], null, null);
+			nodes [1] = new BinaryArbor1<char> (chars[1], null, null);
+			nodes [2] = new BinaryArbor1<char> (chars[2], null, null);
+			nodes [3] = new BinaryArbor1<char> (chars[3], null, null);
+			IEnumerable<char> values = BinaryArbor1<char>.ExtractValues(nodes);
+			AssertCollectionEquality(values, chars);
+
+		}
+
 		/// <summary>
 		/// Iterates over two collections and asserts that the collections have the same length and that they have the same elements when compared 1 to 1 by using Assert.AreEqual.
 		/// </summary>
