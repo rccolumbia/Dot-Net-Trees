@@ -245,22 +245,22 @@ namespace Arbor
 				//No more items.
 				return items;
 			}
-			if (null != Left)
+			if (null != root.Left)
 			{
-				items.Add (Left);
+				items.Add (root.Left);
 			}
-			if (null != Right)
+			if (null != root.Right)
 			{
-				items.Add(Right);
+				items.Add(root.Right);
 			}
 
 			if (null != Left)
 			{
-				items.AddRange (GetChildrenAsBFSRecursive(Left));
+				items.AddRange (GetChildrenAsBFSRecursive(root.Left));
 			}
 			if (null != Right)
 			{
-				items.AddRange (GetChildrenAsBFSRecursive(Right));
+				items.AddRange (GetChildrenAsBFSRecursive(root.Right));
 			}
 			return items;
 		}
