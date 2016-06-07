@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Text;
 
 namespace Arbor
 {
@@ -232,7 +233,18 @@ namespace Arbor
 			List<IBinaryArbor<T>> items = new List<IBinaryArbor<T>>();
 			//Store the current element in the list.
 			items.Add(this);
+			return GetChildrenAsBFSRecursive (this);
+		}
+
+		private IEnumerable<IBinaryArbor<T>> GetChildrenAsBFSRecursive(IBinaryArbor<T> root)
+		{
 			//Dig down to our children, if any.
+			List<IBinaryArbor<T>> items = new List<IBinaryArbor<T>>();
+			if (null == root)
+			{
+				//No more items.
+				return items;
+			}
 			if (null != Left)
 			{
 				items.Add (Left);
@@ -244,11 +256,11 @@ namespace Arbor
 
 			if (null != Left)
 			{
-				items.AddRange (Left.GetChildrenAsBFS());
+				items.AddRange (GetChildrenAsBFSRecursive(Left));
 			}
 			if (null != Right)
 			{
-				items.AddRange (Right.GetChildrenAsBFS());
+				items.AddRange (GetChildrenAsBFSRecursive(Right));
 			}
 			return items;
 		}
@@ -280,6 +292,16 @@ namespace Arbor
 			//Store the current element in the list.
 			items.Add(this);
 			return items;
+		}
+
+		public override string ToString()
+		{
+			StringBuilder output = new StringBuilder (Value.ToString());
+			if (null != Left)
+			{
+				
+			}
+			return output.ToString ();
 		}
 
 		/// <summary>
