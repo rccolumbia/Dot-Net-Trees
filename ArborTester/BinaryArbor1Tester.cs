@@ -81,19 +81,19 @@ namespace ArborTester
 		}
 
 		[Test ()]
-		public void AsBFS4()
+		public void AsBFS()
 		{
-			BinaryArbor1<int> tree = new BinaryArbor1<int>(2, new BinaryArbor1<int>(1, null, null), new BinaryArbor1<int>(2, null, new BinaryArbor1<int>(3, null, null)));
-			int[] targetValues = { 2, 1, 3, 4 };
+			BinaryArbor1<int> tree = GetTestTree();
+			int[] targetValues = { 2, 1, 3, 4, 5, 6, 7 };
 			AssertCollectionEquality (tree.GetItemsAsBFS (), targetValues);
 
 		}
 
 		[Test ()]
-		public void AsDFS4()
+		public void AsDFS()
 		{
-			BinaryArbor1<int> tree = new BinaryArbor1<int>(2, new BinaryArbor1<int>(1, null, null), new BinaryArbor1<int>(2, null, new BinaryArbor1<int>(3, null, null)));
-			int[] targetValues = { 1, 4, 3, 2 };
+			BinaryArbor1<int> tree = GetTestTree();
+			int[] targetValues = { 2, 1, 4, 5, 3, 6, 7};
 			AssertCollectionEquality (tree.GetItemsAsDFS (), targetValues);
 
 		}
@@ -114,6 +114,14 @@ namespace ArborTester
 			IEnumerable<char> values = BinaryArbor1<char>.ExtractValues(nodes);
 			AssertCollectionEquality(values, chars);
 
+		}
+
+		private BinaryArbor1<int> GetTestTree()
+		{
+			BinaryArbor1<int> leftEnd = new BinaryArbor1<int> (1, new BinaryArbor1<int> (4, null, null), new BinaryArbor1<int> (5, null, null));
+			BinaryArbor1<int> rightEnd = new BinaryArbor1<int> (3, new BinaryArbor1<int> (6, null, null), new BinaryArbor1<int> (7, null, null));
+			BinaryArbor1<int> tree = new BinaryArbor1<int> (2, leftEnd, rightEnd);
+			return tree;
 		}
 
 		/// <summary>
