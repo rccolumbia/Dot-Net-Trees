@@ -7,7 +7,7 @@ namespace YHaplogroup
 	/// <summary>
 	/// This class holds information on a specific Y-Chromosome Haplogroup (yHG). This class exists in an IS A relationship with a tree class because the relationships of a haplogroup are an inherent part of its identity.
 	/// </summary>
-	public class YHaplogroup : BinaryArbor1<YHaplogroupInformation>
+	public class YHaplo : BinaryArbor1<YHaplogroupInformation>
 	{
 		#region fields
 
@@ -15,10 +15,15 @@ namespace YHaplogroup
 
 		#endregion
 
-		public YHaplogroup ()
+		public YHaplo ()
 		{
 		}
 
+		public YHaplo (IEnumerable<string> names)
+		{
+			Names = new List<string>(names);
+		}
+			
 		#region Properties
 
 		/// <summary>
@@ -71,9 +76,9 @@ namespace YHaplogroup
 		/// <returns>the haplogroup with the specified name, null otherwise</returns>
 		/// <param name="name">The name to search for</param>
 		/// <param name="haplogroups">The haplogroups to search</param>
-		public static YHaplogroup SearchForNameInHaplogroups(IEnumerable<YHaplogroup> haplogroups, string name)
+		public static YHaplo SearchForNameInHaplogroups(IEnumerable<YHaplo> haplogroups, string name)
 		{
-			foreach (YHaplogroup haplogroup in haplogroups)
+			foreach (YHaplo haplogroup in haplogroups)
 			{
 				if (haplogroup.HasName(name))
 				{
@@ -90,7 +95,7 @@ namespace YHaplogroup
 		/// </summary>
 		/// <returns>the descendant of this haplogroup with the specified name, null otherwise</returns>
 		/// <param name="name">The name to search for</param>
-		public YHaplogroup GetDescendantWithName(string name)
+		public YHaplo GetDescendantWithName(string name)
 		{
 			return SearchForNameInHaplogroups(GetDescendants().AsHaplogroupCollection(), name);
 		}
@@ -100,7 +105,7 @@ namespace YHaplogroup
 		/// </summary>
 		/// <returns>the ancestor of this haplogroup with the specified name, null otherwise</returns>
 		/// <param name="name">The name to search for</param>
-		public YHaplogroup GetAncestorWithName(string name)
+		public YHaplo GetAncestorWithName(string name)
 		{
 			return SearchForNameInHaplogroups(GetAncestors().AsHaplogroupCollection(), name);
 		}

@@ -8,19 +8,19 @@ namespace YHaplogroup
 	{
 
 
-		public static IEnumerable<YHaplogroup> AsHaplogroupCollection<T>(this IEnumerable<IBinaryArbor<T>> collection)
+		public static IEnumerable<YHaplo> AsHaplogroupCollection<T>(this IEnumerable<IBinaryArbor<T>> collection)
 		{
 			foreach (IBinaryArbor<T> node in collection)
 			{
-				yield return node as YHaplogroup;
+				yield return node as YHaplo;
 			}
 		}
 
-		public static IEnumerable<YHaplogroup> AsHaplogroupCollection<T>(this IEnumerable<IParentedArbor<T>> collection)
+		public static IEnumerable<YHaplo> AsHaplogroupCollection<T>(this IEnumerable<IParentedArbor<T>> collection)
 		{
 			foreach (IParentedArbor<T> node in collection)
 			{
-				yield return node as YHaplogroup;
+				yield return node as YHaplo;
 			}
 		}
 	}

@@ -36,6 +36,7 @@
   <ItemGroup>
     <Compile Include="Test.cs" />
     <Compile Include="BinaryArbor1Tester.cs" />
+    <Compile Include="YHaplogroupTester.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -45,6 +46,10 @@
     <ProjectReference Include="..\Arbor\Arbor.csproj">
       <Project>{1EFCFF17-78AE-4765-B5F1-BD53257EBA78}</Project>
       <Name>Arbor</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\YHaplogroup\YHaplogroup.csproj">
+      <Project>{D1F2BA34-CA48-4072-84AE-BC6FED2E3CAB}</Project>
+      <Name>YHaplogroup</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
