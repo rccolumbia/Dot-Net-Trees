@@ -32,7 +32,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="YHaplogroupInformation.cs" />
     <Compile Include="YHaplogroupExtensions.cs" />
     <Compile Include="YHaplo.cs" />
   </ItemGroup>

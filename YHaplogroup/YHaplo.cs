@@ -7,11 +7,9 @@ namespace YHaplogroup
 	/// <summary>
 	/// This class holds information on a specific Y-Chromosome Haplogroup (yHG). This class exists in an IS A relationship with a tree class because the relationships of a haplogroup are an inherent part of its identity.
 	/// </summary>
-	public class YHaplo : BinaryArbor1<YHaplogroupInformation>
+	public class YHaplo : BinaryArbor1<IList<string>>
 	{
 		#region fields
-
-		private IList<string> names;
 
 		#endregion
 
@@ -47,17 +45,17 @@ namespace YHaplogroup
 		{
 			get
 			{
-				if (null == names)
+				if (null == Value)
 				{
 					//Create an empty one.
-					names = new List<string>();
+					Value = new List<string>();
 				}
-				return names;
+				return Value;
 					
 			}
 			set
 			{
-				names = value;
+				Value = value;
 			}
 
 		}
