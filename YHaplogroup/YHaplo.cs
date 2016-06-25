@@ -43,7 +43,7 @@ namespace YHaplogroup
 		/// Gets or sets a list of names associated with this haplogroup. The first item represents the primary name.
 		/// </summary>
 		/// <value>The names.</value>
-		IList<string> Names
+		public IList<string> Names
 		{
 			get
 			{

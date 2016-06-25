@@ -50,7 +50,14 @@ namespace ArborTester
 			Assert.IsNull(YHaplo.SearchForNameInHaplogroups(haplos,"4"));
 			Assert.IsNull(YHaplo.SearchForNameInHaplogroups(haplos,"A1"));
 			Assert.IsNull(YHaplo.SearchForNameInHaplogroups(haplos,"R2"));
+
 			Assert.AreEqual(YHaplo.SearchForNameInHaplogroups(haplos,"I").PrimaryName, YHaplo.SearchForNameInHaplogroups(haplos,"H").PrimaryName);
+
+			Assert.IsTrue(YHaplo.SearchForNameInHaplogroups(haplos,"I").Names.Contains("G"));
+			Assert.IsTrue(YHaplo.SearchForNameInHaplogroups(haplos,"I").Names.Contains("H"));
+			Assert.IsTrue(YHaplo.SearchForNameInHaplogroups(haplos,"I").Names.Contains("I"));
+			
+			Assert.IsTrue(YHaplo.SearchForNameInHaplogroups(haplos,"P").Names.Contains("Q"));
 		}
 
 		/// <summary>
