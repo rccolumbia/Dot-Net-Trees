@@ -27,6 +27,19 @@ namespace YHaplogroup
 		#region Properties
 
 		/// <summary>
+		/// Gets the primary name of the haplogroup.
+		/// </summary>
+		/// <value>the primary name of the haplogroup</value>
+		public string PrimaryName
+		{
+			get
+			{
+				return Names [0];
+			}
+			//Should a set be permitted?
+		}
+
+		/// <summary>
 		/// Gets or sets a list of names associated with this haplogroup. The first item represents the primary name.
 		/// </summary>
 		/// <value>The names.</value>

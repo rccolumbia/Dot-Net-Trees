@@ -7,6 +7,26 @@ namespace ArborTester
 	[TestFixture ()]
 	public class YHaplogroupTester
 	{
+
+		/// <summary>
+		/// Verifies that a name can be found in a name search.
+		/// </summary>
+		[Test ()]
+		public void TestPrimaryName()
+		{
+			YHaplo[] haplos = new YHaplo[6];
+			haplos[0] = new YHaplo(new string[] {"A", "B", "C"});
+			haplos[1] = new YHaplo(new string[] {"D", "E", "F"});
+			haplos[2] = new YHaplo(new string[] {"G", "H", "I"});
+			haplos[3] = new YHaplo(new string[] {"J", "K", "L"});
+			haplos[4] = new YHaplo(new string[] {"M", "N", "O"});
+			haplos[5] = new YHaplo(new string[] {"P", "Q", "R"});
+
+			Assert.AreEqual(YHaplo.SearchForNameInHaplogroups(haplos,"Q").PrimaryName, "P");
+			Assert.AreEqual(YHaplo.SearchForNameInHaplogroups(haplos,"A").PrimaryName, YHaplo.SearchForNameInHaplogroups(haplos,"C").PrimaryName);
+			Assert.AreEqual(YHaplo.SearchForNameInHaplogroups(haplos,"I").PrimaryName, YHaplo.SearchForNameInHaplogroups(haplos,"H").PrimaryName);
+		}
+
 		/// <summary>
 		/// Verifies that a name can be found in a name search.
 		/// </summary>
@@ -30,6 +50,7 @@ namespace ArborTester
 			Assert.IsNull(YHaplo.SearchForNameInHaplogroups(haplos,"4"));
 			Assert.IsNull(YHaplo.SearchForNameInHaplogroups(haplos,"A1"));
 			Assert.IsNull(YHaplo.SearchForNameInHaplogroups(haplos,"R2"));
+			Assert.AreEqual(YHaplo.SearchForNameInHaplogroups(haplos,"I").PrimaryName, YHaplo.SearchForNameInHaplogroups(haplos,"H").PrimaryName);
 		}
 
 		/// <summary>
@@ -52,7 +73,8 @@ namespace ArborTester
 			haplos[1].Right = haplos[4];
 			haplos[2].Left = haplos[5];
 			//Assert.IsTrue(haplos[0].cont
-			//Finish me
+			Assert.AreEqual(haplos[0].GetDescendantWithName("R").PrimaryName, haplos[5].PrimaryName);
+
 		}
 
 		[Test ()]
