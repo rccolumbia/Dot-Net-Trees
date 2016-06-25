@@ -58,6 +58,8 @@ namespace ArborTester
 			Assert.IsTrue(YHaplo.SearchForNameInHaplogroups(haplos,"I").Names.Contains("I"));
 			
 			Assert.IsTrue(YHaplo.SearchForNameInHaplogroups(haplos,"P").Names.Contains("Q"));
+
+			Assert.IsFalse(YHaplo.SearchForNameInHaplogroups(haplos,"P").Names.Contains("A"));
 		}
 
 		/// <summary>
@@ -81,6 +83,8 @@ namespace ArborTester
 			haplos[2].Left = haplos[5];
 			//Assert.IsTrue(haplos[0].cont
 			Assert.AreEqual(haplos[0].GetDescendantWithName("R").PrimaryName, haplos[5].PrimaryName);
+
+			Assert.AreNotEqual(haplos[0].GetDescendantWithName("R").PrimaryName, haplos[2].PrimaryName);
 
 		}
 
