@@ -103,6 +103,27 @@ namespace Arbor
 		}
 
 		/// <summary>
+		/// Gets the number of direct children of this node.
+		/// </summary>
+		/// <value>The child count.</value>
+		public virtual int ChildCount
+		{
+			get
+			{
+				int childCount = 0;
+				if (null != Left)
+				{
+					childCount++;
+				}
+				if (null != Right)
+				{
+					childCount++;
+				}
+				return childCount;
+			}
+		}
+
+		/// <summary>
 		/// Nulls the children of this node.
 		/// </summary>
 		public void ClearChildren()

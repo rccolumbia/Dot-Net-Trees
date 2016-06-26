@@ -238,7 +238,7 @@ namespace YHaplogroup
 				introduction.Append ("I have no parent. ");
 			}
 			introduction.Append("I have ");
-			introduction.Append(Children.Count ().ToString());
+			introduction.Append(ChildCount.ToString());
 			introduction.Append(" children.");
 			return introduction.ToString();
 		}
