@@ -217,6 +217,10 @@ namespace YHaplogroup
 
 		public override string ToString()
 		{
+			if (IsDummy)
+			{
+				return "This is a dummy record.";
+			}
 			StringBuilder introduction = new StringBuilder("My names are: ");
 			introduction.Append(GetNamesString ());
 			introduction.Append(" . ");
@@ -231,7 +235,7 @@ namespace YHaplogroup
 			}
 			else
 			{
-				introduction.Append ("I have no parent.");
+				introduction.Append ("I have no parent. ");
 			}
 			introduction.Append("I have ");
 			introduction.Append(Children.Count ().ToString());

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Arbor;
 
@@ -27,7 +28,9 @@ namespace YHaplogroup
 
 		public static string GetHaplogroupDossiers(this IEnumerable<YHaplo> collection)
 		{
-			StringBuilder dossiers = new StringBuilder ("");
+			StringBuilder dossiers = new StringBuilder ("Total haplos: ");
+			dossiers.Append (collection.ToArray().Count());
+			dossiers.Append (". \n");
 			foreach (YHaplo haplo in collection)
 			{
 				dossiers.Append(haplo.ToString());
