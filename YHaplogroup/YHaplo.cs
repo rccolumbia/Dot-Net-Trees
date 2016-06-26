@@ -207,6 +207,14 @@ namespace YHaplogroup
 			return string.Join (",", Names);
 		}
 
+		public IEnumerable<YHaplo> GetDescendantsAsYHaplos()
+		{
+			foreach (var haplo in GetDescendants())
+			{
+				yield return haplo as YHaplo;
+			}
+		}
+
 		public override string ToString()
 		{
 			StringBuilder introduction = new StringBuilder("My names are: ");

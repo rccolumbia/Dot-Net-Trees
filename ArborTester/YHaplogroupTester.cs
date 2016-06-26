@@ -128,6 +128,11 @@ namespace ArborTester
 			//Load from memory, not a file.
 			var loader = new YHaploLoader(reader);
 			YHaplo root = loader.Load();
+
+			var toPrint = new System.Collections.Generic.List<YHaplo> ();
+			toPrint.Add (root);
+			toPrint.AddRange(root.GetDescendantsAsYHaplos());
+			throw new Exception (toPrint.GetHaplogroupDossiers());
 			//Verify that the correct data was loaded.
 			Assert.AreEqual(root.PrimaryName,"R1");
 			Assert.AreNotEqual(root.PrimaryName,"R1b");
