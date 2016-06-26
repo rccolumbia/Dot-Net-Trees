@@ -131,6 +131,24 @@ namespace ArborTester
 			//Verify that the correct data was loaded.
 			Assert.AreEqual(root.PrimaryName,"R1");
 			Assert.AreNotEqual(root.PrimaryName,"R1b");
+			Assert.IsNotNull(root.GetDescendantWithName("R1b-L21"));
+			Assert.IsNotNull(root.GetDescendantWithName("R1b-M222"));
+
+			//The son is not the father....
+			Assert.IsNull(root.GetDescendantWithName("R1b-L21").GetDescendantWithName("R1b"));
+			Assert.IsNull(root.GetDescendantWithName("R1b-M222").GetDescendantWithName("R1b"));
+
+			//Grandparent/grandchild relationships are important.
+			Assert.IsNotNull(root.GetDescendantWithName("R1b-L21").GetDescendantWithName("R1b-M222"));
+
+			//Siblings are not in a parent/child relationship.
+			Assert.IsNull(root.GetDescendantWithName("R1b-L21").GetDescendantWithName("R1b-S21"));
+
+			//One is not one's own parent....
+			Assert.IsNull(root.GetDescendantWithName("R1b-U106").GetDescendantWithName("R1b-S21"));
+			Assert.IsNull(root.GetDescendantWithName("R1b-U106").GetDescendantWithName("R1b-U106"));
+			Assert.IsNull(root.GetDescendantWithName("R1b-S21").GetDescendantWithName("R1b-S21"));
+			Assert.IsNull(root.GetDescendantWithName("R1").GetDescendantWithName("R1"));
 		}
 
 		[Test ()]
