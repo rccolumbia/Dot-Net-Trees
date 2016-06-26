@@ -86,6 +86,7 @@ namespace YHaplogroup
 		/// <param name="children">The children to populate</param>
 		public void PopulateNonBinaryChildrenWithDummies(IEnumerable<YHaplo> children)
 		{
+			YHaplo[] childArray = children.ToArray ();
 			int childCount = childArray.Count();
 			if (0 == childCount)
 			{
