@@ -58,6 +58,15 @@ namespace YHaplogroup
 			while (record != null)
 			{
 				string[] recordElements = record.Split ('/');
+				if (null == recordElements)
+				{
+					throw new FileLoadException("Could not parse record. The data found was " + record);
+				}
+				if (3 != recordElements.Count())
+				{
+					//Read error
+					throw new FileLoadException("Record does not have three slash delimited sections. The record found was " + record);
+				}
 				string[] names = recordElements[0].Split (',');
 				string description = recordElements[1];
 				string parent = recordElements[2];
