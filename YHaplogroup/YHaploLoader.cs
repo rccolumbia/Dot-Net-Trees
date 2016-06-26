@@ -14,7 +14,7 @@ namespace YHaplogroup
 
 		public YHaploLoader (StreamReader inputFile)
 		{
-			var dataSource = inputFile;
+			dataSource = inputFile;
 		}
 		public YHaploLoader (string inputFile) : this(new StreamReader(inputFile))
 		{
@@ -25,6 +25,12 @@ namespace YHaplogroup
 			//Read the raw records.
 			IEnumerable<KeyValuePair<YHaplo,string>> rawRecords = ReadHaplos(dataSource);
 			//Collate them into a relationship tree.
+			foreach (KeyValuePair<YHaplo,string> rawRecord in rawRecords)
+			{
+				YHaplo current = rawRecord.Key;
+				string parent = rawRecord.Value;
+				//current.Pa
+			}
 			//stub for now
 			return null;
 
