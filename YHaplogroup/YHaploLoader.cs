@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace YHaplogroup
 {
@@ -29,7 +30,8 @@ namespace YHaplogroup
 			{
 				YHaplo current = rawRecord.Key;
 				string parent = rawRecord.Value;
-				//current.Pa
+				//Find all children
+				var children = from KeyValuePair<YHaplo,string> potentialChild in rawRecords where potentialChild.Value == current.PrimaryName select potentialChild.Key;
 			}
 			//stub for now
 			return null;
