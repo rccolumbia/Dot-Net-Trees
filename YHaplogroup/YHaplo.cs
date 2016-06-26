@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Arbor;
 
 namespace YHaplogroup
@@ -208,7 +209,19 @@ namespace YHaplogroup
 
 		public override string ToString()
 		{
-			return GetNamesString();
+			StringBuilder introduction = new StringBuilder("My names are: ");
+			introduction.Append(GetNamesString ());
+			introduction.Append(" . ");
+			introduction.Append("My description is: ");
+			introduction.Append(Description);
+			introduction.Append(" . ");
+			introduction.Append("My parent's name is: ");
+			introduction.Append(((YHaplo)Parent).PrimaryName);
+			introduction.Append(" . ");
+			introduction.Append("I have ");
+			introduction.Append(Children.Count ().ToString());
+			introduction.Append(" children.");
+			return introduction.ToString();
 		}
 	}
 }

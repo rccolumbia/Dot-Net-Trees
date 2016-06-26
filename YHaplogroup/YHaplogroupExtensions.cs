@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using Arbor;
 
 namespace YHaplogroup
@@ -22,6 +23,17 @@ namespace YHaplogroup
 			{
 				yield return node as YHaplo;
 			}
+		}
+
+		public static string GetHaplogroupDossiers(this IEnumerable<YHaplo> collection)
+		{
+			StringBuilder dossiers = new StringBuilder ("");
+			foreach (YHaplo haplo in collection)
+			{
+				dossiers.Append(haplo.ToString());
+				dossiers.Append ("\n");
+			}
+			return dossiers.ToString ();
 		}
 	}
 }
