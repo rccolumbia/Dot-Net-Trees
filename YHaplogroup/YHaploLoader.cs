@@ -32,6 +32,7 @@ namespace YHaplogroup
 				string parent = rawRecord.Value;
 				//Find all children
 				var children = from KeyValuePair<YHaplo,string> potentialChild in rawRecords where potentialChild.Value == current.PrimaryName select potentialChild.Key;
+				current.PopulateNonBinaryChildrenWithDummies(children);
 			}
 			//stub for now
 			return null;
