@@ -21,21 +21,32 @@ namespace YHaplogroup
 		{
 		}
 
-		public IEnumerable<YHaplo> Load()
+
+		/// <summary>
+		/// Loads a collection of YHaplos, builds them into a tree, and returns the root
+		/// </summary>
+		/// <returns>The root of the collection. If no root (record with no parent) is found, returns null</returns>
+		public YHaplo Load()
 		{
 			//Read the raw records.
 			IEnumerable<KeyValuePair<YHaplo,string>> rawRecords = ReadHaplos(dataSource);
 			//Collate them into a relationship tree.
+			YHaplo root = null;
 			foreach (KeyValuePair<YHaplo,string> rawRecord in rawRecords)
 			{
 				YHaplo current = rawRecord.Key;
 				string parent = rawRecord.Value;
+				if ("null" == parent)
+				{
+					//This is the root
+					root = current;
+				}
 				//Find all children
 				var children = from KeyValuePair<YHaplo,string> potentialChild in rawRecords where potentialChild.Value == current.PrimaryName select potentialChild.Key;
 				current.PopulateNonBinaryChildrenWithDummies(children);
 			}
-			//stub for now
-			return null;
+			//return from KeyValuePair<YHaplo,string> validRecord in rawRecords where true select validRecord.Key;
+			return root;
 
 		}
 
