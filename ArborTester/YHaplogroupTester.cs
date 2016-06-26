@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
+using System.IO;
+using System.Text;
 using YHaplogroup;
 
 namespace ArborTester
@@ -109,6 +111,26 @@ namespace ArborTester
 			Assert.IsNotNull(YHaplo.SearchForNameInHaplogroups(haplos,"M"));
 			Assert.IsNotNull(YHaplo.SearchForNameInHaplogroups(haplos,"P"));
 			Assert.IsNull(YHaplo.SearchForNameInHaplogroups(haplos,"5"));
+		}
+
+		[Test()]
+		public void TestPopulateFromText()
+		{
+			string lineDelimiter = "\n";
+			string loadText = 
+				"R1/Proto-Indo-European/null" + lineDelimiter +
+				"R1b/Proto-Italo-Celto-Germanic/R1" + lineDelimiter +
+				"R1b-U106,R1b-S21/Proto-West-Germanic/R1b" + lineDelimiter +
+				"R1b-L21/Proto-Celtic/R1b" + lineDelimiter +
+				"R1b-M222/Ui Neill/R1b-L21";
+			var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes (loadText));
+			var reader = new StreamReader(memoryStream);
+			//Load from memory, not a file.
+			var loader = new YHaploLoader(reader);
+			YHaplo root = loader.Load();
+			//Verify that the correct data was loaded.
+			Assert.AreEqual(root.PrimaryName,"R1");
+			Assert.AreNotEqual(root.PrimaryName,"R1b");
 		}
 
 		[Test ()]
