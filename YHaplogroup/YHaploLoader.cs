@@ -29,7 +29,7 @@ namespace YHaplogroup
 		public YHaplo Load()
 		{
 			//Read the raw records.
-			IEnumerable<KeyValuePair<YHaplo,string>> rawRecords = ReadHaplos(dataSource);
+			KeyValuePair<YHaplo,string>[] rawRecords = ReadHaplos(dataSource).ToArray();
 			//Collate them into a relationship tree.
 			YHaplo root = null;
 			foreach (KeyValuePair<YHaplo,string> rawRecord in rawRecords)
@@ -43,7 +43,8 @@ namespace YHaplogroup
 				}
 				//Find all children
 				var children = from KeyValuePair<YHaplo,string> potentialChild in rawRecords where potentialChild.Value == current.PrimaryName select potentialChild.Key;
-				current.PopulateNonBinaryChildrenWithDummies(children);
+				var childrenArray = children.ToArray();
+				current.PopulateNonBinaryChildrenWithDummies(childrenArray);
 			}
 			//return from KeyValuePair<YHaplo,string> validRecord in rawRecords where true select validRecord.Key;
 			return root;
