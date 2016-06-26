@@ -215,9 +215,16 @@ namespace YHaplogroup
 			introduction.Append("My description is: ");
 			introduction.Append(Description);
 			introduction.Append(" . ");
-			introduction.Append("My parent's name is: ");
-			introduction.Append(((YHaplo)Parent).PrimaryName);
-			introduction.Append(" . ");
+			if (null != Parent)
+			{	
+				introduction.Append ("My parent's name is: ");
+				introduction.Append (((YHaplo)Parent).PrimaryName);
+				introduction.Append (" . ");
+			}
+			else
+			{
+				introduction.Append ("I have no parent.");
+			}
 			introduction.Append("I have ");
 			introduction.Append(Children.Count ().ToString());
 			introduction.Append(" children.");
