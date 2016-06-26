@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Arbor;
 
 namespace YHaplogroup
@@ -28,6 +29,12 @@ namespace YHaplogroup
 		}
 			
 		#region Properties
+
+		/// <summary>
+		/// Gets or sets whether this object is a dummy placeholder object
+		/// </summary>
+		/// <value><c>true</c> if this instance is dummy; otherwise, <c>false</c>.</value>
+		public bool IsDummy { get; set; }
 
 		/// <summary>
 		/// Gets the primary name of the haplogroup.
@@ -73,6 +80,43 @@ namespace YHaplogroup
 
 		#endregion
 
+		/// <summary>
+		/// Populates the Children of this node with more than two children via the use of dummy intermediary YHaplo instances.
+		/// </summary>
+		/// <param name="children">The children to populate</param>
+		public void PopulateNonBinaryChildrenWithDummies(IEnumerable<YHaplo> children)
+		{
+			int childCount = children.Count();
+			if (0 == childCount)
+			{
+				//Nothing to add.
+				return;
+			}
+			YHaplo[] childArray = children.ToArray ();
+			if (1 == childCount)
+			{
+				Left = childArray [0];
+				return;
+			}
+			if (2 == childCount)
+			{
+				Left = childArray [0];
+				Right = childArray [1];
+				return;
+			}
+			//There are more than 2 nodes. We will need dummies.
+			//Store the first child
+			Left = childArray[0];
+			//Create a dummy to store the rest
+			YHaplo right = new YHaplo() {IsDummy = true};
+			//Recurse
+			//This would be easier with C :)
+			List<YHaplo> rest = new List<YHaplo>(childArray);
+			rest.Remove (rest[0]);
+			Right = right;
+			right.PopulateNonBinaryChildrenWithDummies(rest);
+
+		}
 
 		/// <summary>
 		/// Determines if this haplogroup has the specified name among its names.

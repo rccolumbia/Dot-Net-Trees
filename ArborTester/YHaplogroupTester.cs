@@ -88,6 +88,29 @@ namespace ArborTester
 
 		}
 
+		[Test()]
+		public void TestPopulateNonBinaryChildrenWithDummies()
+		{
+			YHaplo[] haplos = new YHaplo[6];
+			haplos[0] = new YHaplo(new string[] {"A", "B", "C"});
+			haplos[1] = new YHaplo(new string[] {"D", "E", "F"});
+			haplos[2] = new YHaplo(new string[] {"G", "H", "I"});
+			haplos[3] = new YHaplo(new string[] {"J", "K", "L"});
+			haplos[4] = new YHaplo(new string[] {"M", "N", "O"});
+			haplos[5] = new YHaplo(new string[] {"P", "Q", "R"});
+			YHaplo root = new YHaplo (new string[] { "1", "01", "001" });
+			root.PopulateNonBinaryChildrenWithDummies(haplos);
+			//Check for all the children.
+			Assert.IsNotNull(YHaplo.SearchForNameInHaplogroups(haplos,"A"));
+			Assert.IsNotNull(YHaplo.SearchForNameInHaplogroups(haplos,"B"));
+			Assert.IsNotNull(YHaplo.SearchForNameInHaplogroups(haplos,"D"));
+			Assert.IsNotNull(YHaplo.SearchForNameInHaplogroups(haplos,"G"));
+			Assert.IsNotNull(YHaplo.SearchForNameInHaplogroups(haplos,"J"));
+			Assert.IsNotNull(YHaplo.SearchForNameInHaplogroups(haplos,"M"));
+			Assert.IsNotNull(YHaplo.SearchForNameInHaplogroups(haplos,"P"));
+			Assert.IsNull(YHaplo.SearchForNameInHaplogroups(haplos,"5"));
+		}
+
 		[Test ()]
 		public void TestCase ()
 		{
