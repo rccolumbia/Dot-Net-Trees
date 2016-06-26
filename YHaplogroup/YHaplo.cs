@@ -21,6 +21,11 @@ namespace YHaplogroup
 		{
 			Names = new List<string>(names);
 		}
+
+		public YHaplo (IEnumerable<string> names, string description) : this(names)
+		{
+			Description = description;
+		}
 			
 		#region Properties
 
@@ -59,6 +64,12 @@ namespace YHaplogroup
 			}
 
 		}
+
+		/// <summary>
+		/// Gets or sets this haplogroup's description
+		/// </summary>
+		/// <value>The description.</value>
+		public string Description {get;set;}
 
 		#endregion
 

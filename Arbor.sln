@@ -7,12 +7,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArborTester", "ArborTester\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YHaplogroup", "YHaplogroup\YHaplogroup.csproj", "{D1F2BA34-CA48-4072-84AE-BC6FED2E3CAB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YHaplogroupConsole", "YHaplogroupConsole\YHaplogroupConsole.csproj", "{01E2AAA0-E4C4-46F7-A0E2-2B59DBA8CE36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01E2AAA0-E4C4-46F7-A0E2-2B59DBA8CE36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01E2AAA0-E4C4-46F7-A0E2-2B59DBA8CE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01E2AAA0-E4C4-46F7-A0E2-2B59DBA8CE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01E2AAA0-E4C4-46F7-A0E2-2B59DBA8CE36}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1484F7AC-1078-4F42-9F38-205124EDA8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1484F7AC-1078-4F42-9F38-205124EDA8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1484F7AC-1078-4F42-9F38-205124EDA8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
