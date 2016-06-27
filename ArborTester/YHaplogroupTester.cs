@@ -132,7 +132,7 @@ namespace ArborTester
 			var toPrint = new System.Collections.Generic.List<YHaplo> ();
 			toPrint.Add (root);
 			toPrint.AddRange(root.GetDescendantsAsYHaplos());
-			throw new Exception (toPrint.GetHaplogroupDossiers());
+			//throw new Exception (toPrint.GetHaplogroupDossiers());
 			//Verify that the correct data was loaded.
 			Assert.AreEqual(root.PrimaryName,"R1");
 			Assert.AreNotEqual(root.PrimaryName,"R1b");

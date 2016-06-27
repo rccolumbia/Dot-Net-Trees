@@ -1,0 +1,5 @@
+﻿R1/Proto-Indo-European/null
+R1b/Proto-Italo-Celto-Germanic/R1
+R1b-U106,R1b-S21/Proto-West-Germanic/R1b
+R1b-L21/Proto-Celtic/R1b
+R1b-M222/Ui Neill/R1b-L21

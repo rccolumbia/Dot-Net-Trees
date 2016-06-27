@@ -158,6 +158,23 @@ namespace YHaplogroup
 		}
 
 		/// <summary>
+		/// Searches for a haplogroup with a specified name anywhere in the current YHaplo's family, including the haplo itself, its descendants, and its ancestors.
+		/// </summary>
+		/// <returns>The haplogroup, if any</returns>
+		/// <param name="name">The name to search for</param>
+		public YHaplo FindInFamily(string name)
+		{
+			List<YHaplo> haplosToSearch = new List<YHaplo>();
+			//Add the current YHaplo.
+			haplosToSearch.Add(this);
+			//Add the curent YHaplo's ancestors.
+			haplosToSearch.AddRange(GetAncestorsAsYHaplos());
+			//Add the curent YHaplo's descendants.
+			haplosToSearch.AddRange(GetDescendantsAsYHaplos());
+			return YHaplo.SearchForNameInHaplogroups (haplosToSearch, name);
+		}
+
+		/// <summary>
 		/// Finds the descendant of this haplogroup with the specified name, if any.
 		/// </summary>
 		/// <returns>the descendant of this haplogroup with the specified name, null otherwise</returns>
@@ -210,6 +227,14 @@ namespace YHaplogroup
 		public IEnumerable<YHaplo> GetDescendantsAsYHaplos()
 		{
 			foreach (var haplo in GetDescendants())
+			{
+				yield return haplo as YHaplo;
+			}
+		}
+
+		public IEnumerable<YHaplo> GetAncestorsAsYHaplos()
+		{
+			foreach (var haplo in GetAncestors())
 			{
 				yield return haplo as YHaplo;
 			}
