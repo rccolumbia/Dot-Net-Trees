@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 
 namespace Arbor
@@ -234,6 +235,19 @@ namespace Arbor
 				yield return current;
 				current = current.Parent;
 			}
+		}
+
+		/// <summary>
+		/// Gets an enumerated collection of the object, its ancestors, and its descendants.
+		/// </summary>
+		/// <returns>an enumerated collection of the object, its ancestors, and its descendants.</returns>
+		public IEnumerable<IBinaryArbor<T>> GetEntireFamily()
+		{
+			var family = new List<IBinaryArbor<T>>();
+			family.Add(this);
+			family.AddRange(from IParentedArbor<T> ancestor in GetAncestors() select ancestor as IBinaryArbor<T>);
+			family.AddRange(GetDescendants());
+			return family;
 		}
 
 		/// <summary>

@@ -166,11 +166,10 @@ namespace YHaplogroup
 		{
 			List<YHaplo> haplosToSearch = new List<YHaplo>();
 			//Add the current YHaplo.
-			haplosToSearch.Add(this);
-			//Add the curent YHaplo's ancestors.
-			haplosToSearch.AddRange(GetAncestorsAsYHaplos());
-			//Add the curent YHaplo's descendants.
-			haplosToSearch.AddRange(GetDescendantsAsYHaplos());
+			foreach (var haplo in GetEntireFamily())
+			{
+				haplosToSearch.Add(haplo as YHaplo);
+			}
 			return YHaplo.SearchForNameInHaplogroups (haplosToSearch, name);
 		}
 

@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Arbor;
 
 namespace ArborTester
@@ -85,6 +86,7 @@ namespace ArborTester
 		{
 			BinaryArbor1<int> tree = GetTestTree();
 			int[] targetValues = { 2, 1, 3, 4, 5, 6, 7 };
+			Assert.AreEqual(tree.GetEntireFamily().ToArray().Length, targetValues.Length);
 			AssertCollectionEquality (tree.GetItemsAsBFS (), targetValues);
 
 		}
@@ -94,6 +96,7 @@ namespace ArborTester
 		{
 			BinaryArbor1<int> tree = GetTestTree();
 			int[] targetValues = { 2, 1, 4, 5, 3, 6, 7};
+			Assert.AreEqual(tree.GetEntireFamily().ToArray().Length, targetValues.Length);
 			AssertCollectionEquality (tree.GetItemsAsDFS (), targetValues);
 
 		}
