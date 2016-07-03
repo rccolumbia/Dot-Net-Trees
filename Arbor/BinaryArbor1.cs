@@ -338,14 +338,15 @@ namespace Arbor
 			{
 				items.Add (root.Left);
 			}
-			if (null != root.Right)
-			{
-				items.Add(root.Right);
-			}
 			if (null != root.Left)
 			{
 				items.AddRange(GetChildrenAsDFSRecursive(root.Left));
 			}
+			if (null != root.Right)
+			{
+				items.Add(root.Right);
+			}
+
 			if (null != root.Right)
 			{
 				items.AddRange(GetChildrenAsDFSRecursive(root.Right));
