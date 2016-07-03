@@ -270,7 +270,8 @@ namespace Arbor
 			List<IBinaryArbor<T>> items = new List<IBinaryArbor<T>>();
 			//Store the current element in the list.
 			items.Add(this);
-			return GetChildrenAsBFSRecursive (this);
+			items.AddRange(GetChildrenAsBFSRecursive(this));
+			return items;
 		}
 
 		private IEnumerable<IBinaryArbor<T>> GetChildrenAsBFSRecursive(IBinaryArbor<T> root)
