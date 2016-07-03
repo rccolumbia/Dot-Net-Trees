@@ -220,7 +220,7 @@ namespace Arbor
 		/// <returns>an enumerated collection of all the items in a tree using a Depth First Search (DFS)</returns>
 		public IEnumerable<T> GetItemsAsDFS()
 		{
-			return ExtractValues(GetChildrenAsBFS());
+			return ExtractValues(GetChildrenAsDFS());
 		}
 
 		/// <summary>
@@ -256,7 +256,9 @@ namespace Arbor
 		/// <returns>an enumerated collection of all the descendants in the tree.</returns>
 		public IEnumerable<IBinaryArbor<T>> GetDescendants()
 		{
-			return GetChildrenAsBFS();
+			List<IBinaryArbor<T>> items = new List<IBinaryArbor<T>>();
+			//Don't store the current element in the list.
+			return GetChildrenAsBFSRecursive (this);
 		}
 
 		/// <summary>
