@@ -274,6 +274,11 @@ namespace Arbor
 			return items;
 		}
 
+		/// <summary>
+		/// Gets the children of root as a Breadth-First Search (BFS)
+		/// </summary>
+		/// <returns>the children of root as a Breadth-First Search (BFS)</returns>
+		/// <param name="root">the root</param>
 		private IEnumerable<IBinaryArbor<T>> GetChildrenAsBFSRecursive(IBinaryArbor<T> root)
 		{
 			//Dig down to our children, if any.
@@ -292,11 +297,11 @@ namespace Arbor
 				items.Add(root.Right);
 			}
 
-			if (null != Left)
+			if (null != root.Left)
 			{
 				items.AddRange (GetChildrenAsBFSRecursive(root.Left));
 			}
-			if (null != Right)
+			if (null != root.Right)
 			{
 				items.AddRange (GetChildrenAsBFSRecursive(root.Right));
 			}
@@ -310,25 +315,43 @@ namespace Arbor
 		public IEnumerable<IBinaryArbor<T>> GetChildrenAsDFS()
 		{
 			List<IBinaryArbor<T>> items = new List<IBinaryArbor<T>>();
-			//Dig down to our children, if any.
-			if (null != Left)
-			{
-				items.AddRange (Left.GetChildrenAsBFS());
-			}
-			if (null != Right)
-			{
-				items.AddRange (Right.GetChildrenAsBFS());
-			}
-			if (null != Left)
-			{
-				items.Add (Left);
-			}
-			if (null != Right)
-			{
-				items.Add(Right);
-			}
 			//Store the current element in the list.
 			items.Add(this);
+			items.AddRange(GetChildrenAsDFSRecursive(this));
+			return items;
+		}
+
+		/// <summary>
+		/// Gets the children of root as a Depth-First Search (DFS)
+		/// </summary>
+		/// <returns>The children of root as a Depth-First Search (DFS)</returns>
+		/// <param name="root">the root</param>
+		private IEnumerable<IBinaryArbor<T>> GetChildrenAsDFSRecursive(IBinaryArbor<T> root)
+		{
+			List<IBinaryArbor<T>> items = new List<IBinaryArbor<T>>();
+			if (null == root)
+			{
+				//No more items.
+				return items;
+			}
+			if (null != root.Left)
+			{
+				items.Add (root.Left);
+			}
+			if (null != root.Right)
+			{
+				items.Add(root.Right);
+			}
+			if (null != root.Left)
+			{
+				items.AddRange(GetChildrenAsDFSRecursive(root.Left));
+			}
+			if (null != root.Right)
+			{
+				items.AddRange(GetChildrenAsDFSRecursive(root.Right));
+			}
+
+
 			return items;
 		}
 
