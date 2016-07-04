@@ -7,10 +7,10 @@ namespace YHaplogroupConsole
 
 		public static void Main (string[] args)
 		{
-			Console.WriteLine ("BFS: ");
-			new ConsoleTester().BFSTest();
-			Console.WriteLine ("DFS: ");
-			new ConsoleTester().DFSTest();
+			//Console.WriteLine ("BFS: ");
+			//new ConsoleTester().BFSTest();
+			//Console.WriteLine ("DFS: ");
+			//new ConsoleTester().DFSTest();
 			//Console.WriteLine ("Hello World!");
 			int numArgs = args.Length;
 			if (numArgs >= 1)

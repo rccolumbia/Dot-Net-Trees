@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Text;
 using YHaplogroup;
 
@@ -27,6 +28,17 @@ namespace YHaplogroupConsole
 			//Load it
 			YHaploLoader loader = new YHaploLoader(path);
 			Root = loader.Load();
+			if (null!=Root)
+			{
+				int numLoaded = Root.GetEntireFamily().Count();
+				Console.WriteLine("Loaded " + numLoaded + " yhaplos.");
+				Console.WriteLine(Root.GetEntireFamilyAsYHaplos().GetHaplogroupDossiers());
+			}
+			else
+			{
+				Console.WriteLine ("Could not load yhaplos.");
+			}
+				
 		}
 
 		public string GetHaplogroupDetails(string haploToSearchFor)

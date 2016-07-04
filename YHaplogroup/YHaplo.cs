@@ -164,13 +164,7 @@ namespace YHaplogroup
 		/// <param name="name">The name to search for</param>
 		public YHaplo FindInFamily(string name)
 		{
-			List<YHaplo> haplosToSearch = new List<YHaplo>();
-			//Add the current YHaplo.
-			foreach (var haplo in GetEntireFamily())
-			{
-				haplosToSearch.Add(haplo as YHaplo);
-			}
-			return YHaplo.SearchForNameInHaplogroups (haplosToSearch, name);
+			return YHaplo.SearchForNameInHaplogroups (GetEntireFamilyAsYHaplos(), name);
 		}
 
 		/// <summary>
@@ -221,6 +215,14 @@ namespace YHaplogroup
 		{
 			string outputValue = string.Empty;
 			return string.Join (",", Names);
+		}
+
+		public IEnumerable<YHaplo> GetEntireFamilyAsYHaplos()
+		{
+			foreach (var haplo in GetEntireFamily())
+			{
+				yield return haplo as YHaplo;
+			}
 		}
 
 		public IEnumerable<YHaplo> GetDescendantsAsYHaplos()
