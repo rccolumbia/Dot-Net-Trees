@@ -159,7 +159,10 @@ namespace ArborTester
 			Assert.IsNotNull(root.FindInFamily("R1").FindInFamily("R1"));
 			Assert.IsNotNull(root.FindInFamily("R1").FindInFamily("R1b"));
 			Assert.IsNotNull(root.FindInFamily("R1b").FindInFamily("R1"));
-			Assert.IsNotNull(root.FindInFamily("R1b-U106").FindInFamily("R1b-M222"));
+
+			//Verify that cousin inclusion/exclusion works.
+			Assert.IsNotNull(root.FindInFamily("R1b-U106").FindInFamily("R1b-M222", true));
+			Assert.IsNull(root.FindInFamily("R1b-U106").FindInFamily("R1b-M222", false));
 		}
 
 		[Test ()]
