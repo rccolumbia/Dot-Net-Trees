@@ -51,6 +51,30 @@ namespace YHaplogroup
 
 		}
 
+		/// <summary>
+		/// Parses a haplo string in the form of <comma delimited string of names>/<description>/<name of parent>
+		/// </summary>
+		/// <returns>A KeyValuePair of the parsed yhaplo and a string giving its parent, if any</returns>
+		/// <param name="record">The record to parse</param>
+		private KeyValuePair<YHaplo,string> ParseHaploString(string record)
+		{
+			string[] recordElements = record.Split ('/');
+			if (null == recordElements)
+			{
+				throw new FileLoadException("Could not parse record. The data found was " + record);
+			}
+			if (3 != recordElements.Count())
+			{
+				//Read error
+				throw new FileLoadException("Record does not have three slash delimited sections. The record found was " + record);
+			}
+			string[] names = recordElements[0].Split (',');
+			string description = recordElements[1];
+			string parent = recordElements[2];
+			YHaplo newHaplo = new YHaplo (names, description);
+			return new KeyValuePair<YHaplo,string> (newHaplo,parent);
+		}
+
 		private IEnumerable<KeyValuePair<YHaplo,string>> ReadHaplos(StreamReader readFrom)
 		{
 			
@@ -58,21 +82,7 @@ namespace YHaplogroup
 			record = readFrom.ReadLine ();
 			while (record != null)
 			{
-				string[] recordElements = record.Split ('/');
-				if (null == recordElements)
-				{
-					throw new FileLoadException("Could not parse record. The data found was " + record);
-				}
-				if (3 != recordElements.Count())
-				{
-					//Read error
-					throw new FileLoadException("Record does not have three slash delimited sections. The record found was " + record);
-				}
-				string[] names = recordElements[0].Split (',');
-				string description = recordElements[1];
-				string parent = recordElements[2];
-				YHaplo newHaplo = new YHaplo (names, description);
-				yield return new KeyValuePair<YHaplo,string> (newHaplo,parent);
+				yield return ParseHaploString(record);
 				record = readFrom.ReadLine();
 			}
 		}
