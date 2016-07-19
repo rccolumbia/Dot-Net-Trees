@@ -158,13 +158,24 @@ namespace YHaplogroup
 		}
 
 		/// <summary>
-		/// Searches for a haplogroup with a specified name anywhere in the current YHaplo's family, including the haplo itself, its descendants, and its ancestors.
+		/// Searches for a haplogroup with a specified name anywhere in the current YHaplo's family, including the haplo itself, its descendants, its ancestors, and cousins.
 		/// </summary>
 		/// <returns>The haplogroup, if any</returns>
 		/// <param name="name">The name to search for</param>
 		public YHaplo FindInFamily(string name)
 		{
-			return YHaplo.SearchForNameInHaplogroups (GetEntireFamilyAsYHaplos(), name);
+			return FindInFamily(name, true);
+		}
+
+		/// <summary>
+		/// Searches for a haplogroup with a specified name anywhere in the current YHaplo's family, including the haplo itself, its descendants, its ancestors, and cousins if requested.
+		/// </summary>
+		/// <returns>The haplogroup, if any</returns>
+		/// <param name="name">The name to search for</param>
+		/// <param name="includeCousins">Whether to include cousins</param>
+		public YHaplo FindInFamily(string name, bool includeCousins)
+		{
+			return YHaplo.SearchForNameInHaplogroups (GetEntireFamilyAsYHaplos(includeCousins), name);
 		}
 
 		/// <summary>
@@ -219,7 +230,12 @@ namespace YHaplogroup
 
 		public IEnumerable<YHaplo> GetEntireFamilyAsYHaplos()
 		{
-			foreach (var haplo in GetEntireFamily())
+			return GetEntireFamilyAsYHaplos(true);
+		}
+
+		public IEnumerable<YHaplo> GetEntireFamilyAsYHaplos(bool includeCousins)
+		{
+			foreach (var haplo in GetEntireFamily(includeCousins))
 			{
 				yield return haplo as YHaplo;
 			}

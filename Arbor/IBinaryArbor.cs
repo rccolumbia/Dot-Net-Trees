@@ -33,6 +33,13 @@ namespace Arbor
 		IEnumerable<IBinaryArbor<T>> GetEntireFamily();
 
 		/// <summary>
+		/// Gets an enumerated collection of the object, its ancestors, and its descendants.
+		/// </summary>
+		/// <returns>an enumerated collection of the object, its ancestors, its descendants, and cousins if requested</returns>
+		/// <param name="includeCousins">Whether to include cousins</param>
+		IEnumerable<IBinaryArbor<T>> GetEntireFamily(bool includeCousins);
+
+		/// <summary>
 		/// Gets an enumerated collection of all the descendants in the tree.
 		/// </summary>
 		/// <returns>an enumerated collection of all the descendants in the tree.</returns>

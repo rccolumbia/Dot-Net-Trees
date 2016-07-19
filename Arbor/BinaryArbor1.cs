@@ -240,11 +240,36 @@ namespace Arbor
 		/// <summary>
 		/// Gets an enumerated collection of the object, its ancestors, and its descendants.
 		/// </summary>
-		/// <returns>an enumerated collection of the object, its ancestors, and its descendants.</returns>
+		/// <returns>an enumerated collection of the object, its ancestors,its descendants, and cousins</returns>
 		public IEnumerable<IBinaryArbor<T>> GetEntireFamily()
+		{
+			return GetEntireFamily(true);
+		}
+
+		/// <summary>
+		/// Gets an enumerated collection of the object, its ancestors, and its descendants.
+		/// </summary>
+		/// <returns>an enumerated collection of the object, its ancestors, its descendants, and cousins if requested</returns>
+		/// <param name="includeCousins">Whether to include cousins</param>
+		public IEnumerable<IBinaryArbor<T>> GetEntireFamily(bool includeCousins)
 		{
 			var family = new List<IBinaryArbor<T>>();
 			family.Add(this);
+
+			if (includeCousins)
+			{
+				//First, get our oldest ancestor.
+				var ancestors = GetAncestors();
+				if ((null != ancestors) && (ancestors.Count()>0))
+				{
+					//We might have cousins.
+					var oldest = ancestors.Last();
+					family.AddRange((oldest as IBinaryArbor<T>).GetEntireFamily(false));
+					return family;
+				}
+				//Otherwise, we are the oldest. We can't have any cousins, so go ahead and just get our descendants.
+			}
+
 			family.AddRange(from IParentedArbor<T> ancestor in GetAncestors() select ancestor as IBinaryArbor<T>);
 			family.AddRange(GetDescendants());
 			return family;
