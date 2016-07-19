@@ -153,7 +153,13 @@ namespace ArborTester
 			Assert.IsNull(root.GetDescendantWithName("R1b-U106").GetDescendantWithName("R1b-S21"));
 			Assert.IsNull(root.GetDescendantWithName("R1b-U106").GetDescendantWithName("R1b-U106"));
 			Assert.IsNull(root.GetDescendantWithName("R1b-S21").GetDescendantWithName("R1b-S21"));
-			Assert.IsNull(root.GetDescendantWithName("R1").GetDescendantWithName("R1"));
+			Assert.IsNull(root.FindInFamily("R1").GetDescendantWithName("R1"));
+
+			//Verify we can go up, down, or side to side in a family.
+			Assert.IsNotNull(root.FindInFamily("R1").FindInFamily("R1"));
+			Assert.IsNotNull(root.FindInFamily("R1").FindInFamily("R1b"));
+			Assert.IsNotNull(root.FindInFamily("R1b").FindInFamily("R1"));
+			Assert.IsNotNull(root.FindInFamily("R1b-U106").FindInFamily("R1b-M222"));
 		}
 
 		[Test ()]
